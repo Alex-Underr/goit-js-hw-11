@@ -19,7 +19,6 @@ const searchFormSubmit = async event => {
   searchQuery = event.currentTarget.elements.searchQuery.value;
   try {
     const { data } = await fetchImages(searchQuery, page);
-    console.log(data);
     if (!data.totalHits) {
       galleryList.innerHTML = '';
       Notiflix.Notify.failure(
@@ -43,10 +42,8 @@ const searchFormSubmit = async event => {
 
 const onButtonClick = async () => {
   page += 1;
-  console.log(page);
   try {
     const { data } = await fetchImages(searchQuery, page);
-    console.log(data);
     if (data.hits.length < 40) {
       loadMoreBtn.classList.add('is-hidden');
       Notiflix.Notify.info(
